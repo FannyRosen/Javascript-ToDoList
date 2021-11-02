@@ -59,6 +59,9 @@ span {
   height: 100vh;
   border-radius: 10px;
 }
+#listContainer #addItem {
+  margin-top: 10px;
+}
 #listContainer ul {
   list-style: none;
   border-radius: 5px;
