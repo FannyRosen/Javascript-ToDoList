@@ -1,5 +1,6 @@
 window.onload = function () {
   createList();
+  addToDos();
 };
 
 function createList() {
@@ -20,4 +21,16 @@ function createList() {
     ul.appendChild(li);
   }
   document.getElementById("listContainer").appendChild(ul);
+}
+
+function addToDos() {
+  let addToDoButton = document.getElementById("addToDo");
+  let toDoContainer = document.getElementById("toDoContainer");
+  let inputField = document.getElementById("addItem");
+
+  addToDoButton.addEventListener("click", function () {
+    let newToDo = document.createElement("p");
+    newToDo.innerHTML = inputField.value;
+    toDoContainer.appendChild(newToDo);
+  });
 }
