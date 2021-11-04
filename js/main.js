@@ -2,6 +2,9 @@ window.onload = function () {
   createList();
   addToDos();
 };
+//global variabel
+let ul = document.createElement("ul");
+ul.id = "list";
 
 function createList() {
   let createList = [
@@ -12,8 +15,6 @@ function createList() {
     "Make appointment",
     "Water plant",
   ];
-  let ul = document.createElement("ul");
-  ul.id = "list";
 
   for (let i = 0; i < createList.length; i++) {
     let li = document.createElement("li");
@@ -25,12 +26,11 @@ function createList() {
 
 function addToDos() {
   let addToDoButton = document.getElementById("addToDo");
-  let toDoContainer = document.getElementById("toDoContainer");
   let inputField = document.getElementById("addItem");
 
   addToDoButton.addEventListener("click", function () {
-    let newToDo = document.createElement("p");
+    let newToDo = document.createElement("li");
     newToDo.innerHTML = inputField.value;
-    toDoContainer.appendChild(newToDo);
+    ul.appendChild(newToDo);
   });
 }
