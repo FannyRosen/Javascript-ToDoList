@@ -35,8 +35,9 @@ function createList() {
   for (let i = 0; i < toDos.length; i++) {
     //Skapar nytt li element för varje plats i listan
     let li = document.createElement("li");
-    li.innerHTML = toDos[i].task;
-    li.addEventListener("click", () => {
+    let p = document.createElement("p");
+    p.innerHTML = toDos[i].task;
+    p.addEventListener("click", () => {
       handleClick(i);
     });
     //Om completed är true, lägg till klass som sätter stil.
@@ -44,8 +45,9 @@ function createList() {
       li.className = "markeddone";
       console.log(toDos);
     }
-    //Skriver ut barnet till föräldern.
+    //Sätter ut barnet(listelementet) till föräldern(ulelementet).
     ul.appendChild(li);
+    li.appendChild(p);
     //Skapar en knapp med inner html och tilldelar id.
     let button = document.createElement("button");
     button.innerHTML = "x";
@@ -57,7 +59,7 @@ function createList() {
 
     li.appendChild(button);
   }
-  //Lägg ut fullständiga "nya" lista.
+  //Lägg ut ul som nu är fylld med nya li element i listContainer.
   document.getElementById("listContainer").appendChild(ul);
 }
 //Tar bort i(platsen vi är nu i listan), 1 steg framåt.
