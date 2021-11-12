@@ -10,6 +10,12 @@ window.onload = function () {
   createList();
   let addToDoButton = document.getElementById("addToDo");
   addToDoButton.addEventListener("click", addToDos);
+  let sortButton = document.createElement("button");
+  sortButton.innerHTML = "Sort";
+  sortButton.id = "sort";
+  sortButton.addEventListener("click", sortList);
+  let div = document.getElementById("sortItems");
+  div.appendChild(sortButton);
 };
 
 //Skapar upp nya objekt med två värden,1 string och en boolean.
@@ -45,10 +51,10 @@ function createList() {
       li.className = "markeddone";
       console.log(toDos);
     }
-    //Sätter ut barnet(listelementet) till föräldern(ulelementet).
+    //Sätter ut barnet till föräldern.
     ul.appendChild(li);
     li.appendChild(p);
-    //Skapar en knapp med inner html och tilldelar id.
+    //Skapar en knapp med inner html och tilldelar id för styling.
     let button = document.createElement("button");
     button.innerHTML = "x";
     button.id = "remove";
@@ -69,7 +75,6 @@ function removeItem(i) {
   createList();
 }
 function handleClick(i) {
-  console.log("Klickade!");
   //1. Hitta det i:et objektet i listan
   //2. Ändra completed på objektet till true
   //3. Anropa createList-funktionen
@@ -77,8 +82,16 @@ function handleClick(i) {
   console.log(toDos);
   createList();
 }
+//Funktion som sorterar gjorda toDos.
+function sortList() {
+  toDos.sort(function (a, b) {
+    return a.completed - b.completed;
+  });
+  createList();
+}
 //Funktion som lägger till nya objekt i listan.
 function addToDos() {
+  event.preventDefault();
   let inputField = document.getElementById("addItem");
   //Skapar variabel som är ett nytt objekt,värdet som användaren skriver in och boolean.
   let newToDo = new ToDo(inputField.value, false);

@@ -80,7 +80,7 @@ body #listContainer {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  height: 100vh;
+  height: max-content;
   border-radius: 10px;
 }
 body #listContainer #addItem {
@@ -112,6 +112,15 @@ body #listContainer #remove {
 }
 body .markeddone {
   text-decoration: line-through;
+}
+body #sortItems {
+  display: flex;
+  justify-content: center;
+}
+body #sortItems #sort {
+  background-color: rgba(139, 168, 151, 0.918);
+  border-radius: 5px;
+  margin-bottom: 20px;
 }
 
 @media screen and (min-width: 600px) {
